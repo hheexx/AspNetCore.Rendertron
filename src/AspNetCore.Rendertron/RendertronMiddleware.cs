@@ -41,6 +41,11 @@ namespace AspNetCore.Rendertron
         private bool IsNeedRender(HttpContext context, RendertronOptions options)
         {
             var userAgent = context.Request.Headers["User-agent"].ToString().ToLowerInvariant();
+            var path = context.Request.Path.Value;
+
+            if (options.ExtensionBlacklist.Any( ext => path.EndsWith("." + ext ))) {
+                return false;
+            }
 
             return options.UserAgents.Any(x => userAgent.Contains(x.ToLowerInvariant()));
         }

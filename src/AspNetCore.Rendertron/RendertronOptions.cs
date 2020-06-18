@@ -23,9 +23,23 @@ namespace AspNetCore.Rendertron
             "vkShare"
         };
 
+
+        static string[] RenderExtensionBlacklist = new string[]
+       {
+            "xml",
+            "csv",
+            "txt",
+            "png",
+            "jpg",
+            "jpeg",
+            "js",
+            "css"
+       };
+
         public string RendertronUrl { get; set; }
         public string AppProxyUrl { get; set; }
         public List<string> UserAgents { get; set; } = new List<string>(BotUserAgents);
+        public List<string> ExtensionBlacklist { get; set; } = new List<string>(RenderExtensionBlacklist);
         public TimeSpan Timeout { get; set; } = TimeSpan.FromSeconds(10);
         public bool InjectShadyDom { get; set; }
         public bool RenderMobile { get; set; }
