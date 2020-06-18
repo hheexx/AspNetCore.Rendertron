@@ -45,7 +45,7 @@ namespace AspNetCore.Rendertron
 
                 if (response.IsSuccessStatusCode && fromAppProxy)
                 {
-                    content = Regex.Replace(content, @"<base href=.* >", "<base href=\"/\">");
+                    content = content.Replace("<base href=", ">", "<base href=\"/\"");
                 }
 
                 if (string.IsNullOrEmpty(content))
