@@ -28,6 +28,7 @@ namespace AspNetCore.Rendertron
         public List<string> UserAgents { get; set; } = new List<string>(BotUserAgents);
         public TimeSpan Timeout { get; set; } = TimeSpan.FromSeconds(10);
         public bool InjectShadyDom { get; set; }
+        public bool RenderMobile { get; set; }
         public TimeSpan HttpCacheMaxAge { get; set; } = TimeSpan.Zero;
         public bool AcceptCompression { get; set; }
     }

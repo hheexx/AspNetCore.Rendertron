@@ -36,7 +36,12 @@ namespace AspNetCore.Rendertron
 
             if (options.InjectShadyDom)
             {
-                renderUrl += $"{(url.Contains("?") ? "&" : "?")}wc-inject-shadydom=true";
+                renderUrl += $"{(renderUrl.Contains("?") ? "&" : "?")}wc-inject-shadydom=true";
+            }
+
+            if (options.RenderMobile) 
+            {
+                renderUrl += $"{(renderUrl.Contains("?") ? "&" : "?")}mobile";
             }
 
             using (var response = await _httpClient.GetAsync(renderUrl, cancellationToken).ConfigureAwait(false))
