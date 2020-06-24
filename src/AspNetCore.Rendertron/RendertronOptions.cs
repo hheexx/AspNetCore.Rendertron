@@ -40,7 +40,7 @@ namespace AspNetCore.Rendertron
         public string AppProxyUrl { get; set; }
         public List<string> UserAgents { get; set; } = new List<string>(BotUserAgents);
         public List<string> ExtensionBlacklist { get; set; } = new List<string>(RenderExtensionBlacklist);
-        public List<string> PathPrefixBlacklist { get; set; } = new List<string>(RenderExtensionBlacklist);
+        public List<string> PathPrefixBlacklist { get; set; } = new List<string>();
         public TimeSpan Timeout { get; set; } = TimeSpan.FromSeconds(10);
         public bool InjectShadyDom { get; set; }
         public bool RenderMobile { get; set; }

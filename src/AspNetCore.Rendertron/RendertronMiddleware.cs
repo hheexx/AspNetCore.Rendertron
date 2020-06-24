@@ -47,7 +47,7 @@ namespace AspNetCore.Rendertron
                 return false;
             }
 
-            if (options.PathPrefixBlacklist.Any(ext => path.StartsWith("." + ext))) {
+            if (options.PathPrefixBlacklist.Any(prefix => path.StartsWith(prefix))) {
                 return false;
             }
 
