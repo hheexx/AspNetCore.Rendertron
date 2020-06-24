@@ -47,6 +47,10 @@ namespace AspNetCore.Rendertron
                 return false;
             }
 
+            if (options.PathPrefixBlacklist.Any(ext => path.StartsWith("." + ext))) {
+                return false;
+            }
+
             return options.UserAgents.Any(x => userAgent.Contains(x.ToLowerInvariant()));
         }
 
