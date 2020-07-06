@@ -76,7 +76,6 @@ namespace AspNetCore.Rendertron
                     Public = true,
                     MaxAge = options.HttpCacheMaxAge
                 };
-                httpResponse.Headers[HeaderNames.Vary] = new string[] { "Accept-Encoding" };
             }
         }
     }
