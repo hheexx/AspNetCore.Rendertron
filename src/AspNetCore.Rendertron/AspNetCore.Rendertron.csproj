@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;netcoreapp3.1</TargetFrameworks>
     <Description>ASP.net core middleware for GoogleChrome Rendertron.</Description>
     <Copyright>Ievgen Galamai</Copyright>
     <PackageId>Galamai.AspNetCore.Rendertron</PackageId>
@@ -12,11 +12,19 @@
     <Authors>Ievgen Galamai</Authors>
     <Company>Ievgen Galamai</Company>
     <NeutralLanguage />
-    <Version>1.3.0</Version>
+    <Version>1.4.0</Version>
   </PropertyGroup>
 
-  <ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' != 'netcoreapp3.1'">
     <PackageReference Include="Microsoft.AspNetCore.Http.Extensions" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Http" Version="2.2.0" />
   </ItemGroup>
 
