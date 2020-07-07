@@ -83,7 +83,9 @@ namespace AspNetCore.Rendertron
         }
 
 
-                httpResponse.Headers.Append(HeadrName");
+        private void AddHeaders(HttpResponse httpResponse, RendertronOptions options, bool isPrerendered) {
+            if (options.AddVeryUserAgentHeader) {
+                httpResponse.Headers.Append(HeaderNames.Vary, "Prerendered");
             }
             if (options.AddPrerenderedHeader) {
                 httpResponse.Headers["Prerendered"] = new string[] { isPrerendered ? "1" : "0" };
