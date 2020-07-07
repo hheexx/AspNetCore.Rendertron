@@ -34,7 +34,7 @@ namespace AspNetCore.Rendertron
             }
             else
             {
-                AddPrerenderHeaders(context.Response, options, false);
+                AddHeaders(context.Response, options, false);
                 return _next(context);
             }
         }
@@ -64,7 +64,7 @@ namespace AspNetCore.Rendertron
                 .ConfigureAwait(false);
 
             AddHttpCacheHeaders(context.Response, options);
-            AddPrerenderHeaders(context.Response, options, true);
+            AddHeaders(context.Response, options, true);
 
             context.Response.StatusCode = (int)response.StatusCode;
             await context.Response.WriteAsync(response.Result, cancellationToken);
@@ -83,10 +83,10 @@ namespace AspNetCore.Rendertron
         }
 
 
-        private void AddPrerenderHeaders(HttpResponse httpResponse, RendertronOptions options, bool isPrerendered) {
+                httpResponse.Headers.Append(HeadrName");
+            }
             if (options.AddPrerenderedHeader) {
                 httpResponse.Headers["Prerendered"] = new string[] { isPrerendered ? "1" : "0" };
-                httpResponse.Headers.Append(HeaderNames.Vary, "Prerendered");
             }
         }
     }
