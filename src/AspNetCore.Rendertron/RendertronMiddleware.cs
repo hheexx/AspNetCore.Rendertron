@@ -85,7 +85,7 @@ namespace AspNetCore.Rendertron
 
         private void AddHeaders(HttpResponse httpResponse, RendertronOptions options, bool isPrerendered) {
             if (options.AddVeryUserAgentHeader) {
-                httpResponse.Headers.Append(HeaderNames.Vary, "Prerendered");
+                httpResponse.Headers.Append(HeaderNames.Vary, "User-Agent");
             }
             if (options.AddPrerenderedHeader) {
                 httpResponse.Headers["Prerendered"] = new string[] { isPrerendered ? "1" : "0" };
