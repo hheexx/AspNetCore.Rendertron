@@ -34,6 +34,7 @@ namespace AspNetCore.Rendertron
             }
             else
             {
+                AddPrerenderHeaders(context.Response, options, false);
                 return _next(context);
             }
         }
@@ -63,6 +64,8 @@ namespace AspNetCore.Rendertron
                 .ConfigureAwait(false);
 
             AddHttpCacheHeaders(context.Response, options);
+            AddPrerenderHeaders(context.Response, options, true);
+
             context.Response.StatusCode = (int)response.StatusCode;
             await context.Response.WriteAsync(response.Result, cancellationToken);
         }
@@ -76,6 +79,14 @@ namespace AspNetCore.Rendertron
                     Public = true,
                     MaxAge = options.HttpCacheMaxAge
                 };
+            }
+        }
+
+
+        private void AddPrerenderHeaders(HttpResponse httpResponse, RendertronOptions options, bool isPrerendered) {
+            if (options.AddPrerenderedHeader) {
+                httpResponse.Headers["Prerendered"] = new string[] { isPrerendered ? "1" : "0" };
+                httpResponse.Headers.Append(HeaderNames.Vary, "Prerendered");
             }
         }
     }

@@ -46,5 +46,6 @@ namespace AspNetCore.Rendertron
         public bool RenderMobile { get; set; }
         public TimeSpan HttpCacheMaxAge { get; set; } = TimeSpan.Zero;
         public bool AcceptCompression { get; set; }
+        public bool AddPrerenderedHeader { get; set; } = true;
     }
 }
