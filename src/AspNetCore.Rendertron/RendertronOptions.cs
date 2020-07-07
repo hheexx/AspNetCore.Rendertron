@@ -20,7 +20,8 @@ namespace AspNetCore.Rendertron
             "showyoubot",
             "slackbot",
             "twitterbot",
-            "vkShare"
+            "vkShare",
+            "whatsapp"
         };
 
 
